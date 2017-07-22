@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Autocomplete Custom</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding autocomp-container>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Colour</ion-label>
+      <ion-input type="text" [(dataItem)]="colour" [value]="colour" [autocomp]="queryFn" [resolveFunction]="resolveFn" [allowCreate]="true" autoAssign="on"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-card>
+    <ion-card-content>
+      This example demonstrates the use of custom sub-components for the popup <b>Create</b> and <b>List</b> sections.
+      The bound model data-item is an object that exposes both name and rgb-colour properties.
+
+      Both the <b>allowCreate</b> and<b>autoAssign</b> properties are set to "true", meaning that the user can create new colours and assign them either explictly
+      (by clicking on a popup item) or implictly (by shifting focus to another control or document element after having entered a valid value).
+    </ion-card-content>
+  </ion-card>
+</ion-content>

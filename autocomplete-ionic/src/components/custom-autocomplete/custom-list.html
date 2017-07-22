@@ -1,0 +1,10 @@
+<table style="width:100%;border-collapse:collapse;">
+    <tr *ngFor="let item of items; let i = index">
+        <td style="width:85%">
+            <button class="autocomplete-button" [attr.autocomplete-cursor]="i == cursor ? true : null" (click)="onSelect(item)">{{getDisplayValue(item)}}</button>
+        </td>
+        <td style="text-align: right;" [attr.autocomplete-cursor]="i == cursor ? true : null">
+            <div class="swatch" [style.background-color]="item.rgb"></div>
+        </td>
+    </tr>
+</table>

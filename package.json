@@ -1,0 +1,32 @@
+{
+  "name": "@brycemarshall/autocomplete-ionic",
+  "version": "1.0.0",
+  "description": "An Ionic package that extends the standard ion-input control with auto-complete-type functionality.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bryce-marshall/autocomplete-ionic.git"
+  },
+  "main": "index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "autocomplete",
+    "auto-complete",
+    "auto complete",
+    "dropdown",
+    "textbox",
+    "input",
+    "ionic"
+  ],
+  "author": "Bryce Marshall",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/core": "^4.3.1",
+    "@brycemarshall/autocomplete-angular": "^1.0.0",
+    "ionic-angular": "^3.5.3",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.13"
+  },
+  "devDependencies": {}
+}

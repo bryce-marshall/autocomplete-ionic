@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": ".",
+    "baseUrl": "autocomplete-ionic/src/autocomplete-ionic",
+    "sourceMap": false,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    // "typeRoots": [
+    //   "autocomplete-angular/node_modules/@types"
+    // ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+  "include": [
+    "./autocomplete-ionic/src/autocomplete-ionic"
+  ],
+  "exclude": [
+    ".vscode"
+  ]
+}
