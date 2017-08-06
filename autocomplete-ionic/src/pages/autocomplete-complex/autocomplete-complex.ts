@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, ToastController } from 'ionic-angular';
-import { QueryProvider } from '../../lib/query-provider';
+import { CurrencyQueryProvider } from '../../lib/currency-query-provider';
 import { Helper } from '../../lib/helper';
-import { AutocompleteResolveData, AutocompleteResolveFunction } from '../../autocomplete-ionic/index';
+import { AutocompleteResolveData, AutocompleteQueryMediator, AutocompleteResolveFunction, BindQueryProcessorFunction } from '@brycemarshall/autocomplete-angular';
 
 @IonicPage()
 @Component({
@@ -15,8 +15,18 @@ export class AutocompleteComplexPage {
   constructor(private toastCtrl: ToastController) {
   }
 
-  get queryCurrenciesFn() {
-    return QueryProvider.queryCurrenciesFn();
+  get bindColoursQueryProc(): BindQueryProcessorFunction {
+    // Returns a function that the Autocomplete runtime will invoke to bind an active control to a query processor after it has
+    // received focus and before its first suggestion query. The same fuction reference will be used until the control loses focus
+    // and the AutocompleteQueryMediator is destroyed.
+    return (mediator: AutocompleteQueryMediator) => {
+      mediator.subscribeFn((sender: AutocompleteQueryMediator, token: any, filter: string) => {
+        //  Retrieve the filtered result. Note that result could equally be resolved asynchronously.
+        let result = CurrencyQueryProvider.queryCurrencies(filter);
+        // Alert the mediator to the result.
+        sender.onResult(token, result);
+      });
+    }
   }
 
   get currency(): any {
@@ -51,7 +61,7 @@ export class AutocompleteComplexPage {
   get resolveFunction(): AutocompleteResolveFunction {
     return (data: AutocompleteResolveData) => {
       let v = data.inputValue.toLowerCase();
-      let results = QueryProvider.queryCurrencies(v);
+      let results = CurrencyQueryProvider.queryCurrencies(v);
       if (results.length == 0) return false;
 
       for (let c of results) {

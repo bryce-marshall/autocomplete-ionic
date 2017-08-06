@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AutocompleteController, AutocompleteListComponent } from '../../autocomplete-ionic/index';
+import { AutocompleteController, AutocompleteListComponent } from '@brycemarshall/autocomplete-angular';
 
 @Component({
     selector: 'custom-list',

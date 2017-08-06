@@ -8,24 +8,28 @@
     <ion-item>
       <ion-label fixed>Currency</ion-label>
       <ion-input type="text" [(dataItem)]="currency" [value]="currencyCode" [allowCreate]="false" autoAssign="on"
-      [autocomp]="queryCurrenciesFn" [textFunction]="formatCurrencyFn" [resolveFunction]="resolveFunction"></ion-input>
+      [autocomp]="bindColoursQueryProc" [textFunction]="formatCurrencyFn" [resolveFunction]="resolveFunction"></ion-input>
     </ion-item>
   </ion-list>
   <ion-card>
     <ion-card-content>
-      In this example the bound model data-item is an object with currency code and name properties, and therefore the query function returns an array of Currency object instances.
-      The <b>allowCreate</b> property is set to "false", the <b>autoAssign</b> property is set to "on", and the <b>resolveFunction</b> property has been assigned a pointer
-      to a function that will attempt to resolve a Currency object from the input control text.
-      This means that the user may assign the field by either: 
+      <p>In this example the bound model data-item is an object with currency code and name properties, and therefore the query function returns an array of Currency object instances.</p>
+      <p>The <b>allowCreate</b> property is set to "false", the <b>autoAssign</b> property is set to "on", and the <b>resolveFunction</b> property has been assigned a pointer
+      to a function that will attempt to resolve a Currency object from the input control text.</p>
+      <p>This means that the user may assign the field by either:</p>
       <ul>
       <li>Explicitly clicking on an item from the popup list; or
       <li>Typing a value into the input control and then shifting focus to another UI element (for example, by pushing the [Tab] key).</li>
       </ul>
-      Note also that:
+      <p>Note also that:</p>
       <ul>
       <li>The <b>resolveFunction</b> will attempt to resolve a Currency object by matching the user's input to <i>either</i> a currency code or a currency name; and
       <li> Although it is a Currency object that is bound to the underlying model, the <b>textFunction</b> property has been assigned a function that  returns the currency code for the final input control value but a more descriptive value for the Currency objects represented in the suggestion list.
       </ul>      
+      <p>Keyboard inputs:</p>
+      <p><b>Escape:</b> Cancel auto-suggested input, close popup.</p>
+      <p><b>Arrow Up/Arrow Down:</b> Navigate popup items / open popup.</p>
+      <p><b>Enter:</b> Apply current input.</p>      
     </ion-card-content>
   </ion-card>  
 </ion-content>

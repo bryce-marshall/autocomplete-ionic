@@ -4,18 +4,21 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { AutocompleteModule } from '../autocomplete-ionic/autocomplete-ionic.module';
+//import { AutocompleteStyles } from '../autocomplete-ionic/autocomplete-styles';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { AutocompleteStyles } from '../autocomplete-ionic/autocomplete-styles';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    AutocompleteStyles,
+    //AutocompleteStyles
   ],
   imports: [
     BrowserModule,
+    AutocompleteModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

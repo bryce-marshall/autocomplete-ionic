@@ -1,13 +1,12 @@
-import { AutocompleteResolveData, AutocompleteResolveFunction, AutocompleteTypeProvider, AutocompleteTypeset } from '../autocomplete-ionic/index';
-import { Colour, QueryProvider } from './query-provider';
-export { Colour } from './query-provider';
+import { AutocompleteResolveData, AutocompleteResolveFunction, AutocompleteTypeProvider, AutocompleteTypeset } from '@brycemarshall/autocomplete-angular';
+import { Colour, ColourQueryProvider } from './colour-query-provider';
 
 export class ColourManager {
     private _colour: Colour = null;
     private _colours: Colour[];
 
     constructor() {
-        this._colours = QueryProvider.queryColours("");
+        this._colours = ColourQueryProvider.queryColours("");
         this.sortColours();
     }
 
@@ -21,7 +20,7 @@ export class ColourManager {
 
     get queryColoursFn() {
         return (filter: string) => {
-            return QueryProvider.queryColours(filter, this._colours);
+            return ColourQueryProvider.queryColours(filter, this._colours);
         }
     }
 

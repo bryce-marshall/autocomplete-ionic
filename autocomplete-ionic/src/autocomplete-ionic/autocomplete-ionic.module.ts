@@ -7,7 +7,7 @@ import { Autocomplete } from './autocomplete';
 
 @NgModule({
   declarations: [
-    //AutocompleteStyles,
+    AutocompleteStyles,
     Autocomplete,
     AutocompleteContainer,
     AutocompletePopup, 
@@ -25,7 +25,7 @@ import { Autocomplete } from './autocomplete';
     IonicPageModule.forChild(CancelIcon),
   ],
   exports: [
-    Autocomplete, AutocompleteContainer
+    Autocomplete, AutocompleteContainer, AutocompleteStyles
   ]
 })
 export class AutocompleteModule {

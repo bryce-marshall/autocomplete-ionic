@@ -1,1 +1,1 @@
-# @brycemarshall/input-autocomplete-angular
+# @brycemarshall/input-autocomplete-ionic
