@@ -16,7 +16,7 @@ import { Autocomplete } from './autocomplete';
     CancelIcon
   ],
   imports: [
-    //IonicPageModule.forChild(AutocompleteStyles),
+    IonicPageModule.forChild(AutocompleteStyles),
     IonicPageModule.forChild(Autocomplete),
     IonicPageModule.forChild(AutocompleteContainer),
     IonicPageModule.forChild(AutocompletePopup),

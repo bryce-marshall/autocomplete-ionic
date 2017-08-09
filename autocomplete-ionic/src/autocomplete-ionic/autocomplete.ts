@@ -15,7 +15,6 @@ export class Autocomplete extends AutocompleteBase {
     private inputEl: ElementRef;
 
     constructor( @Optional() coordinator: AutocompleteCoordinator, @Optional() typeProvider: AutocompleteTypeProvider, ionEl: ElementRef, changeDetectorRef: ChangeDetectorRef) {
-        console.log("Autocomplete (ionic) directive invoked");
         let inputEl = new InputResolvingElementRef(ionEl);
         super(coordinator, typeProvider, inputEl, changeDetectorRef);
         this.ionEl = ionEl;

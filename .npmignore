@@ -1,3 +1,4 @@
 .vscode
 autocomplete-ionic
 tsconfig.json
+build.bat

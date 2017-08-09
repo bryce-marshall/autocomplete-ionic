@@ -15,7 +15,7 @@ export class AutocompleteComplexPage {
   constructor(private toastCtrl: ToastController) {
   }
 
-  get bindColoursQueryProc(): BindQueryProcessorFunction {
+  get bindCurrenciesQueryProc(): BindQueryProcessorFunction {
     // Returns a function that the Autocomplete runtime will invoke to bind an active control to a query processor after it has
     // received focus and before its first suggestion query. The same fuction reference will be used until the control loses focus
     // and the AutocompleteQueryMediator is destroyed.

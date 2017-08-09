@@ -9,9 +9,9 @@ import { CustomAutocompleteModule } from '../../components/custom-autocomplete/c
       AutocompleteCustomPage
   ],
   imports: [
-    IonicPageModule.forChild(AutocompleteCustomPage),
     AutocompleteModule,
-    CustomAutocompleteModule
+    CustomAutocompleteModule,
+    IonicPageModule.forChild(AutocompleteCustomPage)    
   ],
 })
 export class AutocompleteCustomModule {

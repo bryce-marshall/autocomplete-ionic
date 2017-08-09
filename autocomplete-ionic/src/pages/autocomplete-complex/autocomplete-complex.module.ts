@@ -8,8 +8,8 @@ import { AutocompleteModule } from '../../autocomplete-ionic/index'
       AutocompleteComplexPage
   ],
   imports: [
-    IonicPageModule.forChild(AutocompleteComplexPage),
-    AutocompleteModule
+    AutocompleteModule,
+    IonicPageModule.forChild(AutocompleteComplexPage)
   ],
 })
 export class AutocompleteComplexModule {

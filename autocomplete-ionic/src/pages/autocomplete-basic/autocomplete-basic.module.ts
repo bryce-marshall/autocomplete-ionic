@@ -10,10 +10,7 @@ import { AutocompleteModule } from '../../autocomplete-ionic/autocomplete-ionic.
   imports: [
     AutocompleteModule,
     IonicPageModule.forChild(AutocompleteBasicPage)
-  ],
-//   exports: [
-//     AutocompleteBasicPage
-//   ]
+  ]
 })
 export class AutocompleteBasicModule {
 }
