@@ -5,8 +5,7 @@ The behaviour is implemented as an Angular directive that is applied to the ion-
 
 The component popup can be styled using CSS, and customised using custom create and list sub-components.
 
-See the package type-definition files (including those of the @brycemarshall/autocomplete-angular which this package extends) 
-for detailed usage and type documentation.
+See the package type-definition files (including those of the @brycemarshall/autocomplete-angular package which this package extends) for detailed usage and type documentation.
 
 # Demo (Angular version)
 
@@ -540,6 +539,10 @@ The default CSS values are shown below, and may be overridden.
     --cancel-delay: 1000;    
 }
 
+.autocomplete-wrapper {
+    border: 1px solid #dedede;
+}
+
 .autocomplete-wrapper .autocomplete-button {
     text-transform: none;
     display: block;
@@ -590,12 +593,70 @@ The default CSS values are shown below, and may be overridden.
     text-align: center;
     border: none;
 }
+
 /* Material Design Styles */
-.md .autocomplete-popup { min-width: 90%; --trim-below: 24px; --float-above: 20px; --float-below: 14px; }
-.md .autocomplete-popup { background-color: #fafafa; }
-.md .autocomplete-wrapper { border-radius: 2px; box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4); max-height:inherit; }
+.md .autocomplete-popup { 
+    min-width: 90%; 
+    --trim-below: 24px; 
+    --float-above: 20px; 
+    --float-below: 14px; 
+    background-color: #fafafa;
+}
 
+.md .autocomplete-wrapper { 
+    border-radius: 2px; 
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4); 
+    max-height:inherit; 
+}
 
+.md .cancel-icon button { 
+    background-color: red; 
+}
+
+/* iOS Styles */
+.ios .autocomplete-popup { 
+    min-width: 90%; 
+    --trim-below: 24px; 
+    --float-above: 4px; 
+    --float-below: 4px; 
+}
+
+.ios .autocomplete-wrapper { 
+    border: 1px solid #c8c7cc; 
+    border-radius: 10px; 
+    background-color: #fff; 
+    max-height:inherit; 
+}
+
+.ios .cancel-icon button { 
+    background-color: red; 
+    border-radius: 2px; 
+}
+
+/* Windows Platform Styles */
+.wp .autocomplete-popup { 
+    min-width: 90%; 
+    --trim-below: 24px; 
+    --float-above: 5px; 
+    --float-below: 5px; 
+}
+
+.wp .autocomplete-wrapper { 
+    border-radius: 0; 
+    background-color: #ffffff; 
+    border: 2px solid rgba(0, 0, 0, 0.5); 
+    max-height:inherit; 
+}
+
+.wp .cancel-icon { 
+    margin-left: 14px; 
+    margin-right: 14px; 
+}  
+
+.wp .cancel-icon button { 
+    background-color: #488aff; 
+    opacity: 1; 
+}
 ```
 
 # Usage - AutocompleteModule Import
