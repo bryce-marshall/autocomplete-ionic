@@ -1,4 +1,4 @@
-# @brycemarshall/input-autocomplete-ionic
+# @brycemarshall/autocomplete-ionic
 
 Attaches Google-style autocomplete behaviour to a standard ion-input control.
 The behaviour is implemented as an Angular directive that is applied to the ion-input markup element. 
