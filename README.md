@@ -53,7 +53,7 @@ export declare class AutocompleteResolveData {
     /**
      * The value of this property will be true if the originating Autocomplete control has its allowCreate property set to true, otherwise it will be false.
      * The property serves as a hint for the implementing resolver function, which should always try to resolve an existing item that can be exactly mapped
-     * to the input value. If an existing item cannot be resolved, then the implenting function should not create a new one unless this property has a value of true.
+     * to the input value. If an existing item cannot be resolved, then the implementing function should not create a new one unless this property has a value of true.
      * @property shouldCreate
      */
     readonly shouldCreate: boolean;
