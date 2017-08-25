@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Autocomplete Async</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding autocomp-container>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>City</ion-label>
+      <ion-input type="text" [(dataItem)]="city" [autocomp]="bindCitiesQueryProc" [allowCreate]="false" autoAssign="null" [openOnFocus]="false"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-card>
+    <ion-card-content>
+      <p>In this example the bound model data-item is a simple string (the city name) and therefore the query function returns an
+      array of string instances. The <b>allowCreate</b> property is set to "false" and the <b>autoAssign</b> property
+      is set to "null" (a string, and not the typescript/ECMAs script null operator).</p>
+      <p>This means that the user:</p>
+      <ul>
+        <li><b>MUST</b> assign the field with an item from the popup list;</li>
+        <li><b>MUST</b> explicitly click on an item in the list to select it (it will not auto-assign when the control loses
+          focus);</li>
+        <li>but <b>MAY</b> auto-assign a null/empty value to the field, which will be applied when the control loses focus.</li>
+      </ul>
+      <p>Keyboard inputs:</p>
+      <p><b>Escape:</b> Cancel auto-suggested input, close popup.</p>
+      <p><b>Arrow Up/Arrow Down:</b> Navigate popup items / open popup.</p>
+      <p><b>Enter:</b> Apply current input.</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
