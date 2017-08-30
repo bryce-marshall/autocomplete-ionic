@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, ElementRef, HostListener, Optional } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, HostListener, Optional, Renderer, forwardRef } from '@angular/core';
 import { AutocompleteBase, AutocompleteCoordinator } from '@brycemarshall/autocomplete-angular/extend';
 import { AutocompleteTypeProvider } from '@brycemarshall/autocomplete-angular';
 
@@ -8,21 +8,31 @@ import { AutocompleteTypeProvider } from '@brycemarshall/autocomplete-angular';
  */
 @Directive({
     selector: '[autocomp]',
-    exportAs: 'autocomp'
+    exportAs: 'autocomp',
 })
 export class Autocomplete extends AutocompleteBase {
-    private ionEl: ElementRef;
     private inputEl: ElementRef;
+    private renderer: Renderer;
 
-    constructor( @Optional() coordinator: AutocompleteCoordinator, @Optional() typeProvider: AutocompleteTypeProvider, ionEl: ElementRef, changeDetectorRef: ChangeDetectorRef) {
+    constructor( @Optional() coordinator: AutocompleteCoordinator, @Optional() typeProvider: AutocompleteTypeProvider, renderer: Renderer, ionEl: ElementRef, changeDetectorRef: ChangeDetectorRef) {
         let inputEl = new InputResolvingElementRef(ionEl);
         super(coordinator, typeProvider, inputEl, changeDetectorRef);
-        this.ionEl = ionEl;
         this.inputEl = inputEl;
+        this.renderer = renderer;
     }
 
-    protected setControlValue(value: string) {
-        this.inputEl.nativeElement.value = value;
+    protected setControlValue(value: string, persistent: boolean) {
+        if (this.inputEl.nativeElement) {
+            this.renderer.setElementProperty(this.inputEl.nativeElement, 'value', value);
+            if (persistent)
+                (<HTMLElement>this.inputEl.nativeElement).dispatchEvent(new Event("input"));
+        }
+    }
+
+    protected onAfterSetDataItem() {
+        if (this.inputEl.nativeElement) {
+            this.renderer.setElementProperty(this.inputEl.nativeElement, 'value', this.controlValue);
+        }
     }
 
     protected addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void {
@@ -48,11 +58,6 @@ export class Autocomplete extends AutocompleteBase {
     /** @internal */
     @HostListener('ionFocus', ['$event'])
     private onFocus(event: FocusEvent) {
-        // The setControlValue invocation is necessary because Ionic appears to maintain a shadow element or buffer that repopulates 
-        // the input text-box with the last typed value upon it receiving focus. This issue relates back to Angular's (at the time of development)
-        // inability to allow a forced refresh of UI components (necessary in this case following a cancelled edit where the underlying 
-        // model did not change but the input element is out of sync with it). 
-        this.setControlValue(this.controlValue);
         this.handleFocusEvent(<HTMLInputElement>this.inputEl.nativeElement, event);
     }
 
@@ -60,11 +65,6 @@ export class Autocomplete extends AutocompleteBase {
     @HostListener('ionBlur', ['$event'])
     private onBlur(event: FocusEvent) {
         this.handleBlurEvent(<HTMLInputElement>this.inputEl.nativeElement, event);
-    }
-
-    private onAfterDestroyPopup() {
-        // See comments for onFocus method
-        this.setControlValue(this.controlValue);
     }
 }
 
@@ -83,13 +83,13 @@ class InputResolvingElementRef implements ElementRef {
     }
 
     private resolveInputEl(): ElementRef {
-        this.r = true;
         if (this.ref.nativeElement == null) return;
         let ch = this.ref.nativeElement.children;
         for (let i = 0; i < ch.length; i++) {
             let n = ch[i];
             if (n.tagName != "INPUT" || n.type != "text") continue;
             this.n = n;
+            this.r = true;
             break;
         }
     }

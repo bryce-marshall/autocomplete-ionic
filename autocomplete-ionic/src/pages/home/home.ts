@@ -13,6 +13,7 @@ export class HomePage {
     { title: "Autocomplete with Complex Datatype", page: "AutocompleteComplexPage" },
     { title: "Autocomplete with Customised Popup", page: "AutocompleteCustomPage" },
     { title: "Async Autocomplete", page: "AutocompleteAsyncPage" },
+    { title: "Async Set Value", page: "AutocompleteSetValuePage" },
   ];
 
   constructor(public navCtrl: NavController) {

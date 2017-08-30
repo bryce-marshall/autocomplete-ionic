@@ -1,0 +1,3 @@
+# 1.0.4
+## Autocomplete.setControlValue method raises "input" event
+An "input" event is raised on the native input control when the value property is set in a persistent context (i.e not from within a cursor operation). This notifies the encapsulating ion-input control (which subscribes ot the event) that the native input control's value has changed, and prompts the Ionic framework to update form validators and other components (such as floating labels).

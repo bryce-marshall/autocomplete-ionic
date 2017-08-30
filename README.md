@@ -15,6 +15,12 @@ http://plnkr.co/LywhBdi0R4AyXEf5xyHw
 
 npm i @brycemarshall/autocomplete-ionic
 
+## IMPORTANT INSTALLATION NOTE:
+
+Due to a quirk in the Ionic/Angular runtime module loader it may be necessary/advisable to explicitly install the dependency @brycemarshall/autocomplete-angular BEFORE installing the @brycemarshall/autocomplete-ionic package.
+
+Failure to do so MIGHT result in the @brycemarshall/autocomplete-angular package being installed in a node_modules directory below the @brycemarshall/autocomplete-ionic package directory, and consequently the module loader MIGHT NOT resolve it (resulting in a build error).
+
 # Package Exports
 The package exports the following types:
 
@@ -201,6 +207,7 @@ export declare abstract class AutocompleteBase {
      * Where applicable, descriptive text is displayed in list of suggested items, whereas simple text is displayed in the input control.
      */
     getDisplayText(dataItem: any, descriptive: boolean): string;
+    protected handleKeyDownEvent(src: HTMLInputElement, event: KeyboardEvent): void;
     protected handleKeyUpEvent(src: HTMLInputElement, event: KeyboardEvent): void;
     protected handleInputEvent(src: HTMLInputElement, event: Event): void;
     protected handleFocusEvent(src: HTMLInputElement, event: FocusEvent): void;
@@ -217,6 +224,10 @@ export declare abstract class AutocompleteBase {
      * @param value The textual value to assign to the native input control.
      */
     protected abstract setControlValue(value: string): any;
+    /**
+     * Invoked after the dataItem property has been set.
+     */
+    protected abstract onAfterSetDataItem(): any;
     protected abstract addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
     protected abstract removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
@@ -226,10 +237,11 @@ export declare abstract class AutocompleteBase {
  * @class Autocomplete
  */
 export declare class Autocomplete extends AutocompleteBase {
-    private ionEl;
     private inputEl;
-    constructor(coordinator: AutocompleteCoordinator, typeProvider: AutocompleteTypeProvider, ionEl: ElementRef, changeDetectorRef: ChangeDetectorRef);
-    protected setControlValue(value: string): void;
+    private renderer;
+    constructor(coordinator: AutocompleteCoordinator, typeProvider: AutocompleteTypeProvider, renderer: Renderer, ionEl: ElementRef, changeDetectorRef: ChangeDetectorRef);
+    protected setControlValue(value: string, persistent: boolean): void;
+    protected onAfterSetDataItem(): void;
     protected addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
     protected removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, useCapture?: boolean): void;
     /** @internal */
@@ -240,7 +252,6 @@ export declare class Autocomplete extends AutocompleteBase {
     private onFocus(event);
     /** @internal */
     private onBlur(event);
-    private onAfterDestroyPopup();
 }
 
 /**
