@@ -18,7 +18,7 @@
     ]
   },
   "include": [
-    "./autocomplete-ionic/src/autocomplete-ionic"
+    "../autocomplete-ionic/src/autocomplete-ionic"
   ],
   "exclude": [
     ".vscode"
